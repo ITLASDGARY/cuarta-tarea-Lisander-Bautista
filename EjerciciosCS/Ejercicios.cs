@@ -25,8 +25,14 @@ namespace EjerciciosCS
             // TODO: Implementar el cálculo del promedio de temperaturas
             double promedio = 0.0; 
             
+            double[] temperaturas = [10.6, 35.0, 8.15, 23.6, 16.4];
+
+            for (int i = 0; i < temperaturas.Length; i++)
+            {
+                promedio += temperaturas[i];
+            }
             
-            return promedio;
+            return promedio / temperaturas.Length;
         }
 
         /// <summary>
@@ -45,7 +51,24 @@ namespace EjerciciosCS
         {
             // TODO: Implementar la lista de compras interactiva
             List<string> listaCompras = new List<string>();
-            
+            string Entrada = "";
+            Console.WriteLine("Ingrese los productos. Si deseas salir escribe 'salir': ");
+
+            while (Entrada != "salir")
+            {
+                Entrada = Console.ReadLine();
+
+                if (Entrada != "salir")
+                {
+                    listaCompras.Add(Entrada);
+                    Console.WriteLine($"Producto agregado {Entrada}");
+                }
+            }
+
+            foreach (string productos in listaCompras)
+            {
+                Console.WriteLine("Esta es una lista de los productos ingresados: " + productos);
+            }
 
             return listaCompras;
         }
@@ -71,11 +94,31 @@ namespace EjerciciosCS
             // TODO: Implementar la búsqueda de número en array aleatorio
             bool encontrado = false;
             Random random = new Random();
+            int[] numeros = new int[10];
+
+            for (int i = 0; i < numeros.Length; i++)
+            {
+                numeros[i] = random.Next(0,101);
+            }
             
+            Console.WriteLine("Numeros generados: ");
+
+            for (int i = 0; i < numeros.Length; i++)
+            {
+                Console.Write(numeros[i] + " ");
+            }
+
+            Console.WriteLine("\n");
+
+            for (int i = 0; i < numeros.Length; i++)
+            {
+                if (numeros[i] == numeroBuscado)
+                {
+                    return encontrado = true;
+                }
+            }
 
             return encontrado;
         }
-
-        
     }
 }
